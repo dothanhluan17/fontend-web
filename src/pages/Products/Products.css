@@ -1,0 +1,122 @@
+.products-container {
+  padding: 40px 20px;
+  max-width: 1200px;
+  margin: 0 auto;
+  font-family: Arial, sans-serif;
+}
+
+.products-container h1 {
+  font-size: 2rem;
+  font-weight: 600;
+  margin-bottom: 30px;
+  color: #222;
+  text-transform: capitalize;
+  text-align: center;
+}
+
+.products-layout {
+  display: flex;
+  gap: 30px;
+}
+
+/* Sidebar */
+.sidebar {
+  width: 260px;
+  background-color: #fff;
+  border: 1px solid #ddd;
+  max-height: 500px;
+  overflow-y: auto;
+  border-radius: 4px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+}
+
+.sidebar h3,
+.sidebar-header {
+  background-color: #009FE3;
+  color: white;
+  font-weight: bold;
+  padding: 12px 16px;
+  font-size: 15px;
+  border-top-left-radius: 4px;
+  border-top-right-radius: 4px;
+}
+
+.sidebar ul,
+.category-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.sidebar ul li,
+.category-list li {
+  border-bottom: 1px solid #eee;
+}
+
+.sidebar ul li a,
+.category-list li a {
+  display: flex;
+  align-items: center;
+  padding: 12px 16px;
+  color: #333;
+  text-decoration: none;
+  font-size: 14px;
+  transition: background-color 0.2s ease, padding-left 0.2s ease;
+}
+
+.sidebar ul li a span,
+.category-list li a span {
+  margin-right: 8px;
+  font-weight: bold;
+  color: #009FE3;
+}
+
+.sidebar ul li a:hover,
+.category-list li a:hover {
+  background-color: #f5f5f5;
+  padding-left: 20px;
+}
+
+/* Product List */
+.product-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 30px;
+  flex: 1;
+}
+
+/* Product Card Hover Animation */
+.product-list .product-card {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.product-list .product-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+}
+/* Nút "THÊM VÀO GIỎ" */
+.product-card .add-to-cart-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  padding: 8px 12px;
+  border: 1px solid #d10000;
+  border-radius: 6px;
+  background-color: #fff;
+  color: #d10000;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.product-card .add-to-cart-btn:hover {
+  background-color: #ffeaea;
+}
+
+/* Biểu tượng giỏ hàng */
+.product-card .add-to-cart-btn i {
+  font-size: 14px;
+  color: #888;
+}

@@ -1,0 +1,25 @@
+/* BlogListPage.css */
+.blog-list-container {
+  max-width: 800px;
+  margin: 40px auto;
+  padding: 20px;
+}
+.blog-list-title {
+  font-size: 28px;
+  margin-bottom: 20px;
+}
+.blog-title-list {
+  list-style: none;
+  padding: 0;
+}
+.blog-title-list li {
+  margin-bottom: 12px;
+}
+.blog-title-link {
+  color: #007bff;
+  font-size: 18px;
+  text-decoration: none;
+}
+.blog-title-link:hover {
+  text-decoration: underline;
+}

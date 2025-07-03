@@ -1,0 +1,70 @@
+.blog-create-container {
+  max-width: 700px;
+  margin: 40px auto;
+  background: #fff;
+  padding: 30px;
+  border-radius: 10px;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.1);
+}
+
+.blog-create-title {
+  font-size: 28px;
+  font-weight: bold;
+  margin-bottom: 25px;
+  text-align: center;
+  color: #333;
+}
+
+.blog-create-form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.blog-create-form label {
+  font-weight: 600;
+  color: #555;
+}
+
+.blog-create-form input,
+.blog-create-form textarea {
+  padding: 10px 14px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-size: 15px;
+  transition: 0.2s;
+}
+
+.blog-create-form input:focus,
+.blog-create-form textarea:focus {
+  border-color: #007bff;
+  outline: none;
+}
+
+.blog-create-form button {
+  padding: 12px;
+  background-color: #007bff;
+  border: none;
+  color: white;
+  font-weight: bold;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.blog-create-form button:hover {
+  background-color: #0056b3;
+}
+
+.blog-create-form button:disabled {
+  background-color: #ccc;
+  cursor: not-allowed;
+}
+
+.blog-preview {
+  padding: 20px;
+  border: 1px solid #eee;
+  border-radius: 8px;
+  margin-bottom: 20px;
+  background: #f9f9f9;
+}

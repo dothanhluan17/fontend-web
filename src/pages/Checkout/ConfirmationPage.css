@@ -1,0 +1,91 @@
+.confirmation-container {
+  max-width: 1100px;
+  margin: 40px auto;
+  padding: 20px;
+}
+
+.confirmation-title {
+  font-size: 26px;
+  font-weight: bold;
+  color: #0a5ed7;
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.confirmation-box {
+  display: flex;
+  flex-wrap: wrap;
+  background: #fff;
+  border-radius: 10px;
+  padding: 30px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  gap: 20px;
+}
+
+.confirmation-left,
+.confirmation-right {
+  flex: 1;
+  min-width: 300px;
+}
+
+.confirmation-left h3,
+.confirmation-right h3 {
+  font-size: 18px;
+  margin-bottom: 15px;
+  border-bottom: 1px solid #ccc;
+  padding-bottom: 8px;
+}
+
+.order-item {
+  display: flex;
+  align-items: center;
+  margin-bottom: 15px;
+  padding: 10px;
+  border-radius: 8px;
+  border: 1px solid #eee;
+  background-color: #f9f9f9;
+}
+
+.order-item img {
+  width: 70px;
+  height: 70px;
+  object-fit: contain;
+  margin-right: 15px;
+}
+
+.item-info {
+  display: flex;
+  flex-direction: column;
+}
+
+.item-name {
+  font-weight: 500;
+}
+
+.item-price {
+  color: #d10024;
+  font-weight: bold;
+}
+
+.total-price {
+  font-size: 18px;
+  text-align: right;
+  margin-top: 10px;
+}
+
+.home-button {
+  display: block;
+  margin: 30px auto 0;
+  background-color: #0a5ed7;
+  color: #fff;
+  border: none;
+  padding: 12px 30px;
+  border-radius: 25px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.home-button:hover {
+  background-color: #094bc1;
+}

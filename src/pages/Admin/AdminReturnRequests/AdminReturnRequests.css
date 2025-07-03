@@ -1,0 +1,83 @@
+.return-requests-container {
+  padding: 20px;
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+  font-family: 'Segoe UI', sans-serif;
+}
+
+.return-requests-container h2 {
+  margin-bottom: 20px;
+  display: flex;
+  align-items: center;
+  font-size: 24px;
+  color: #333;
+}
+
+.return-requests-container h2 span {
+  margin-right: 10px;
+}
+
+.return-requests-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 15px;
+}
+
+.return-requests-table th,
+.return-requests-table td {
+  padding: 12px 15px;
+  text-align: left;
+  border-bottom: 1px solid #eee;
+}
+
+.return-requests-table th {
+  background-color: #f6f6f6;
+  color: #333;
+  font-weight: 600;
+}
+
+.return-requests-table tbody tr:hover {
+  background-color: #f9f9f9;
+}
+
+.return-status {
+  font-weight: bold;
+  display: inline-block;
+}
+
+.status-pending {
+  color: #e6a700;
+}
+
+.status-approved {
+  color: #28a745;
+}
+
+.status-rejected {
+  color: #dc3545;
+}
+
+.btn {
+  padding: 6px 12px;
+  border: none;
+  border-radius: 6px;
+  margin-right: 6px;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+.btn-approve {
+  background-color: #28a745;
+  color: white;
+}
+
+.btn-reject {
+  background-color: #dc3545;
+  color: white;
+}
+
+.btn:hover {
+  opacity: 0.85;
+  transition: 0.2s ease;
+}

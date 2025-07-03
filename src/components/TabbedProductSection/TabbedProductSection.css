@@ -1,0 +1,41 @@
+.tabbed-section {
+  margin: 40px 0;
+}
+
+.tabbed-title {
+  font-size: 28px;
+  text-align: center;
+  margin-bottom: 10px;
+  font-weight: bold;
+  border-bottom: 1px solid #ccc;
+  display: inline-block;
+  padding-bottom: 5px;
+}
+
+.tabbed-tabs {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  margin-bottom: 20px;
+}
+
+.tabbed-tab {
+  background-color: #eee;
+  border: none;
+  padding: 8px 16px;
+  font-size: 16px;
+  cursor: pointer;
+  border-radius: 4px;
+}
+
+.tabbed-tab.active {
+  background-color: #dc3545;
+  color: #fff;
+}
+
+.tabbed-product-list {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 20px;
+}

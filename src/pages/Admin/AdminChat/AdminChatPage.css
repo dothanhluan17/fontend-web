@@ -1,0 +1,83 @@
+.admin-chat-container {
+  display: flex;
+  height: 80vh;
+  border: 1px solid #ccc;
+  background: #fff;
+}
+
+.conversation-list {
+  width: 25%;
+  border-right: 1px solid #ddd;
+  padding: 10px;
+  overflow-y: auto;
+}
+
+.conversation-item {
+  padding: 10px;
+  border-radius: 4px;
+  cursor: pointer;
+  margin-bottom: 5px;
+  background: #f9f9f9;
+}
+
+.conversation-item.active {
+  background: #d4e7ff;
+  font-weight: bold;
+}
+
+.message-area {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  padding: 10px;
+}
+
+.messages {
+  flex: 1;
+  overflow-y: auto;
+  margin-bottom: 10px;
+}
+
+.message {
+  margin-bottom: 8px;
+  max-width: 70%;
+  padding: 8px 12px;
+  border-radius: 10px;
+}
+
+.message.user {
+  background: #eee;
+  align-self: flex-start;
+}
+
+.message.admin {
+  background: #007bff;
+  color: white;
+  align-self: flex-end;
+}
+
+.message-input {
+  display: flex;
+}
+
+.message-input input {
+  flex: 1;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+.message-input button {
+  padding: 10px 16px;
+  margin-left: 8px;
+  background: #007bff;
+  border: none;
+  color: white;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.no-conversation {
+  color: #999;
+  margin-top: 20px;
+}
