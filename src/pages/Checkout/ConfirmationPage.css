@@ -1,91 +1,74 @@
 .confirmation-container {
-  max-width: 1100px;
+  max-width: 900px;
   margin: 40px auto;
   padding: 20px;
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 0 15px rgba(0,0,0,0.1);
 }
 
 .confirmation-title {
-  font-size: 26px;
-  font-weight: bold;
-  color: #0a5ed7;
   text-align: center;
+  color: green;
   margin-bottom: 30px;
 }
 
 .confirmation-box {
   display: flex;
-  flex-wrap: wrap;
-  background: #fff;
-  border-radius: 10px;
-  padding: 30px;
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-  gap: 20px;
+  gap: 40px;
 }
 
 .confirmation-left,
 .confirmation-right {
   flex: 1;
-  min-width: 300px;
-}
-
-.confirmation-left h3,
-.confirmation-right h3 {
-  font-size: 18px;
-  margin-bottom: 15px;
-  border-bottom: 1px solid #ccc;
-  padding-bottom: 8px;
 }
 
 .order-item {
   display: flex;
   align-items: center;
-  margin-bottom: 15px;
-  padding: 10px;
-  border-radius: 8px;
-  border: 1px solid #eee;
-  background-color: #f9f9f9;
+  gap: 12px;
+  margin-bottom: 12px;
 }
 
 .order-item img {
   width: 70px;
   height: 70px;
-  object-fit: contain;
-  margin-right: 15px;
+  object-fit: cover;
+  border-radius: 8px;
 }
 
 .item-info {
-  display: flex;
-  flex-direction: column;
+  flex: 1;
 }
 
 .item-name {
-  font-weight: 500;
+  font-weight: bold;
 }
 
 .item-price {
-  color: #d10024;
-  font-weight: bold;
+  color: #444;
 }
 
 .total-price {
   font-size: 18px;
+  font-weight: bold;
   text-align: right;
-  margin-top: 10px;
+  margin-top: 20px;
 }
 
 .home-button {
+  margin-top: 30px;
   display: block;
-  margin: 30px auto 0;
-  background-color: #0a5ed7;
+  width: 100%;
+  padding: 12px;
+  background-color: #2ecc71;
   color: #fff;
-  border: none;
-  padding: 12px 30px;
-  border-radius: 25px;
   font-size: 16px;
+  border: none;
+  border-radius: 8px;
   cursor: pointer;
-  transition: background-color 0.2s ease;
 }
 
 .home-button:hover {
-  background-color: #094bc1;
+  background-color: #27ae60;
 }

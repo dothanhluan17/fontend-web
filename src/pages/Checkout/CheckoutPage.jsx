@@ -167,7 +167,7 @@ const CheckoutPage = () => {
     name: '',
     email: '',
     address: '',
-    paymentMethod: 'zalopay', // Mặc định là ZaloPay
+    paymentMethod: 'zalopay',
   });
 
   const total = cartItems.reduce((sum, item) => {
@@ -222,7 +222,6 @@ const CheckoutPage = () => {
     const token = user?.access_token || user?.token;
 
     try {
-      // B1: Gửi đơn hàng lên backend
       const res = await fetch(`${import.meta.env.VITE_API_URL}/orders`, {
         method: "POST",
         headers: {
@@ -239,7 +238,7 @@ const CheckoutPage = () => {
         throw new Error(order.message || "Đặt hàng thất bại");
       }
 
-      // B2: Nếu chọn ZaloPay
+      // ✅ Thanh toán ZaloPay
       if (form.paymentMethod === "zalopay") {
         const zaloRes = await fetch(`${import.meta.env.VITE_API_URL}/payment/zalopay`, {
           method: "POST",
@@ -256,12 +255,53 @@ const CheckoutPage = () => {
           throw new Error("Không tạo được đơn hàng ZaloPay");
         }
 
-        // ✅ Redirect đến trang thanh toán ZaloPay
         window.location.href = zaloData.order_url;
         return;
       }
 
-      // Nếu không dùng ZaloPay, xử lý như bình thường
+      // ✅ Thanh toán MoMo
+      if (form.paymentMethod === "momo") {
+        const momoRes = await fetch(`${import.meta.env.VITE_API_URL}/payment/momo`, {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({
+            idOrder: order._id,
+            amountOrder: order.totalPrice,
+          }),
+        });
+
+        const momoData = await momoRes.json();
+
+        if (!momoRes.ok || !momoData.payUrl) {
+          throw new Error("Không tạo được đơn hàng MoMo");
+        }
+
+        window.location.href = momoData.payUrl;
+        return;
+      }
+
+      // ✅ Thanh toán VNPAY
+      if (form.paymentMethod === "vnpay") {
+        const vnpayRes = await fetch(`${import.meta.env.VITE_API_URL}/payment/vnpay`, {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({
+            idOrder: order._id,
+            amountOrder: order.totalPrice * 100, // VNPAY yêu cầu nhân 100
+          }),
+        });
+
+        const vnpayData = await vnpayRes.json();
+
+        if (!vnpayRes.ok || !vnpayData.data?.vnpayUrl) {
+          throw new Error("Không tạo được đơn hàng VNPAY");
+        }
+
+        window.location.href = vnpayData.data.vnpayUrl;
+        return;
+      }
+
+      // ✅ Các phương thức còn lại
       clearCart();
       navigate('/confirmation', {
         state: {
@@ -300,6 +340,8 @@ const CheckoutPage = () => {
           Phương thức thanh toán:
           <select name="paymentMethod" value={form.paymentMethod} onChange={handleChange}>
             <option value="zalopay">ZaloPay</option>
+            <option value="momo">MoMo</option>
+            <option value="vnpay">VNPAY</option>
             <option value="cash_on_delivery">Thanh toán khi nhận hàng</option>
             <option value="bank_transfer">Chuyển khoản</option>
           </select>
