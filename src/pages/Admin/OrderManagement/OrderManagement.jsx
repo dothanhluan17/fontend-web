@@ -141,6 +141,7 @@ const OrderManagement = () => {
                             <tr>
                               <th>Mã SP</th>
                               <th>Tên sản phẩm</th>
+                              <th>Mã Seri</th>
                               <th>Số lượng</th>
                               <th>Đơn giá</th>
                               <th>Thành tiền</th>
@@ -151,6 +152,7 @@ const OrderManagement = () => {
                               <tr key={i}>
                                 <td>{item.product?._id || item.product}</td>
                                 <td>{item.product?.name || item.name}</td>
+                                 <td>{item.product?.serialNumber || item.serialNumber || '—'}</td>
                                 <td>{item.qty}</td>
                                 <td>{item.price.toLocaleString('vi-VN')}₫</td>
                                 <td>{(item.qty * item.price).toLocaleString('vi-VN')}₫</td>

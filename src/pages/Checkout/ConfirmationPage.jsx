@@ -7,18 +7,28 @@ const ConfirmationPage = () => {
   const navigate = useNavigate();
   const [orderData, setOrderData] = useState(null);
 
+  // Lấy orderId từ query trên URL
+  const query = new URLSearchParams(location.search);
+  const orderId = query.get('orderId');
+
   useEffect(() => {
     if (location.state) {
       setOrderData(location.state);
+    } else if (orderId) {
+      // Nếu có orderId trên URL, gọi API lấy thông tin đơn hàng
+      fetch(`${import.meta.env.VITE_API_URL}/orders/orderid/${orderId}`)
+        .then(res => res.json())
+        .then(data => setOrderData(data))
+        .catch(() => setOrderData(null));
     } else {
       // Lấy từ localStorage nếu không có trong state
       const storedOrder = localStorage.getItem('lastOrder');
       if (storedOrder) {
         setOrderData(JSON.parse(storedOrder));
-        localStorage.removeItem('lastOrder'); // Xóa sau khi dùng
+        localStorage.removeItem('lastOrder');
       }
     }
-  }, [location.state]);
+  }, [location.state, orderId]);
 
   if (!orderData) {
     return (
@@ -31,7 +41,11 @@ const ConfirmationPage = () => {
     );
   }
 
-  const { customerInfo, cartItems, totalPrice } = orderData;
+  // Chuẩn hóa dữ liệu cho cả trường hợp lấy từ API và local
+  const customerInfo = orderData.customerInfo || orderData.customer || {};
+  const cartItems = orderData.orderItems || orderData.cartItems || [];
+  const totalPrice = orderData.totalPrice || orderData.total || 0;
+  const paymentMethod = orderData.paymentMethod || customerInfo.paymentMethod;
 
   const getPaymentMethodLabel = (method) => {
     switch (method) {
@@ -39,8 +53,12 @@ const ConfirmationPage = () => {
         return 'MoMo';
       case 'vnpay':
         return 'VNPAY';
+      case 'zalopay':
+        return 'ZaloPay';
       case 'cash_on_delivery':
         return 'Thanh toán khi nhận hàng';
+      case 'bank_transfer':
+        return 'Chuyển khoản';
       default:
         return 'Không xác định';
     }
@@ -55,8 +73,8 @@ const ConfirmationPage = () => {
           <h3>Thông tin khách hàng</h3>
           <p><strong>Họ và tên:</strong> {customerInfo.name}</p>
           <p><strong>Email:</strong> {customerInfo.email}</p>
-          <p><strong>Địa chỉ:</strong> {customerInfo.address}</p>
-          <p><strong>Phương thức thanh toán:</strong> {getPaymentMethodLabel(customerInfo.paymentMethod)}</p>
+          <p><strong>Địa chỉ:</strong> {orderData.shippingAddress?.address || customerInfo.address}</p>
+          <p><strong>Phương thức thanh toán:</strong> {getPaymentMethodLabel(paymentMethod)}</p>
         </div>
 
         <div className="confirmation-right">
@@ -65,8 +83,8 @@ const ConfirmationPage = () => {
             <div key={index} className="order-item">
               <img src={item.image || 'default-image.jpg'} alt={item.name || 'Sản phẩm'} />
               <div className="item-info">
-                <p className="item-name">{item.name} x {item.quantity}</p>
-                <p className="item-price">{(item.price * item.quantity).toLocaleString()}₫</p>
+                <p className="item-name">{item.name} x {item.qty || item.quantity}</p>
+                <p className="item-price">{((item.price || 0) * (item.qty || item.quantity || 1)).toLocaleString()}₫</p>
               </div>
             </div>
           ))}

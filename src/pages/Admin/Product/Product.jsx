@@ -4,6 +4,7 @@ import './Product.css';
 const Product = () => {
   const [product, setProduct] = useState({
     name: '',
+    serialNumber: '',
     description: '',
     price: '',
     image: '',
@@ -103,6 +104,7 @@ const Product = () => {
   const handleEdit = (prod) => {
     setProduct({
       name: prod.name,
+      serialNumber: prod.serialNumber || '',
       description: prod.description,
       price: prod.price,
       image: prod.image,
@@ -155,6 +157,17 @@ const Product = () => {
             value={product.name}
             onChange={handleChange}
             placeholder="Nhập tên sản phẩm"
+            required
+          />
+        </label>
+        <label>
+          Mã Seri
+          <input
+            type="text"
+            name="serialNumber"
+            value={product.serialNumber || ''}
+            onChange={handleChange}
+            placeholder="VD: SN123456789"
             required
           />
         </label>
@@ -266,6 +279,7 @@ const Product = () => {
             <img src={p.image} alt={p.name} className="product-image" />
             <div className="product-info">
               <h4>{p.name}</h4>
+              <p><strong>Mã Seri:</strong> {p.serialNumber}</p>
               <p><strong>Danh mục:</strong> {categories.find(c => c._id === p.category)?.name || 'Không xác định'}</p>
               <p><strong>Giá:</strong> {p.price} VNĐ</p>
               <p><strong>Số lượng:</strong> {p.countInStock || 0}</p>
