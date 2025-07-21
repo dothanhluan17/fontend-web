@@ -100,6 +100,7 @@ const OrderManagement = () => {
                       {order.status === 'pending' && 'Chưa xác nhận'}
                       {order.status === 'confirmed' && 'Đã xác nhận'}
                       {order.status === 'delivered' && 'Đã giao'}
+                      {order.status === 'cancelled' && '❌ Đã hủy'}
                     </span>
                   </td>
                   <td>{order.totalPrice.toLocaleString('vi-VN')}₫</td>
